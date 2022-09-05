@@ -10,8 +10,18 @@ const AlreadyPublishedComic: NextPage = () => {
     const [usUrls, setUsUrls] = useState("");
 
     const doRegister = async () => {
-
-        const res = await axios.get("/api/registerAlreadyPublishedComic");
+        const params = JSON.stringify({
+            jpTitle: jpTitle,
+            usTitle: usTitle,
+            usUrls: usUrls
+        });
+        const res = await axios.get("/api/registerAlreadyPublishedComic"
+            , {params: {
+                jpTitle: jpTitle,
+                usTitle: usTitle,
+                usUrls: usUrls
+            }}
+        );
         alert(res.data.name);
     }
 

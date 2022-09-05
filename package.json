@@ -12,7 +12,9 @@
     "@types/react-burger-menu": "^2.8.3",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "mysql": "^2.18.1",
     "next": "12.2.5",
+    "promise-mysql": "^5.2.0",
     "react": "18.2.0",
     "react-burger-menu": "^3.0.8",
     "react-dom": "18.2.0"
