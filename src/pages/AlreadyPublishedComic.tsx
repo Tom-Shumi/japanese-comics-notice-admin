@@ -22,7 +22,7 @@ const AlreadyPublishedComic: NextPage = () => {
                 usUrls: usUrls
             }}
         );
-        alert(res.data.name);
+        alert(res.data.result);
     }
 
     return (
