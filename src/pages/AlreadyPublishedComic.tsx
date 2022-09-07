@@ -10,6 +10,12 @@ const AlreadyPublishedComic: NextPage = () => {
     const [usUrls, setUsUrls] = useState("");
 
     const doRegister = async () => {
+
+        if (jpTitle == "" || usTitle == "" || usUrls == "") {
+            alert("Can not insert null.");
+            return;
+        }
+
         const params = JSON.stringify({
             jpTitle: jpTitle,
             usTitle: usTitle,
@@ -23,6 +29,9 @@ const AlreadyPublishedComic: NextPage = () => {
             }}
         );
         alert(res.data.result);
+        setJpTitle("");
+        setUsTitle("");
+        setUsUrls("");
     }
 
     return (
