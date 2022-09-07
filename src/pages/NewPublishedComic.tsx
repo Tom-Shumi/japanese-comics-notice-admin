@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
-import styles from 'styles/AlreadyPublishedComic.module.css';
+import styles from 'styles/NewPublishedComic.module.css';
 import axios from "components/utils/ApiUtil";
 
-const AlreadyPublishedComic: NextPage = () => {
-    const [jpTitle, setJpTitle] = useState("");
+const NewPublishedComic: NextPage = () => {
+    const [usUrl, setUsUrl] = useState("");
     const [usTitle, setUsTitle] = useState("");
-    const [usUrls, setUsUrls] = useState("");
+    const [volumeNum, setVolumeNum] = useState("");
+    const [asin, setAsin] = useState("");
 
     const doRegister = async () => {
 
-        if (jpTitle == "" || usTitle == "" || usUrls == "") {
+        if (usUrl == "" || usTitle == "" || volumeNum == "" || asin == "") {
             alert("Can not insert null.");
             return;
         }
@@ -21,38 +22,45 @@ const AlreadyPublishedComic: NextPage = () => {
         }
 
         const params = JSON.stringify({
-            jpTitle: jpTitle,
+            usUrl: usUrl,
             usTitle: usTitle,
-            usUrls: usUrls
+            volumeNum: volumeNum,
+            asin: asin
         });
-        const res = await axios.get("/api/registerAlreadyPublishedComic"
+        const res = await axios.get("/api/registerNewPublishedComic"
             , {params: {
-                jpTitle: jpTitle,
+                usUrl: usUrl,
                 usTitle: usTitle,
-                usUrls: usUrls
+                volumeNum: volumeNum,
+                asin: asin
             }}
         );
         alert(res.data.result);
-        setJpTitle("");
+        setUsUrl("");
         setUsTitle("");
-        setUsUrls("");
+        setVolumeNum("");
+        setAsin("");
     }
 
     return (
         <Layout>
-            <h2>◆Already Published Comic</h2>
+            <h2>◆New Published Comic</h2>
             <div className={styles.container}>
                 <div className="row">
-                    <h3>Jp Title</h3>
-                    <input type="text" value={jpTitle} onChange={(event) => setJpTitle(event.target.value)}></input>
+                    <h3>Us Url</h3>
+                    <input type="text" value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
                 </div><br />
                 <div className="row">
                     <h3>Us Title</h3>
                     <input type="text" value={usTitle} onChange={(event) => setUsTitle(event.target.value)}></input>
                 </div><br />
                 <div className="row">
-                    <h3>Us Url</h3>
-                    <textarea rows={15} value={usUrls} onChange={(event) => setUsUrls(event.target.value)}></textarea>
+                    <h3>Volume Number</h3>
+                    <input type="text" value={volumeNum} onChange={(event) => setVolumeNum(event.target.value)}></input>
+                </div><br />
+                <div className="row">
+                    <h3>ASIN</h3>
+                    <input type="text" value={asin} onChange={(event) => setAsin(event.target.value)}></input>
                 </div><br />
                 <button type="button" className={styles.registerButton} onClick={doRegister}>
                     Register
@@ -62,4 +70,4 @@ const AlreadyPublishedComic: NextPage = () => {
     )
 }
 
-export default AlreadyPublishedComic
+export default NewPublishedComic

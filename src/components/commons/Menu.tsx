@@ -13,6 +13,9 @@ const Menu: NextPage = () => {
             <Link href="/AlreadyPublishedComic">
                 <a className={styles.menuItem}>AlreadyPublishedComic</a>
             </Link>
+            <Link href="/NewPublishedComic">
+                <a className={styles.menuItem}>NewPublishedComic</a>
+            </Link>
         </BurgetMenu>
     );
 }

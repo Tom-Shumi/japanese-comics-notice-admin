@@ -7,7 +7,7 @@ type Data = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const connection = await db();
-    // comic情報取得
+    
     const maxIdRow = await connection.query("SELECT MAX(id) maxId FROM comic");
     
     const nextRegisterComicId = maxIdRow[0].maxId + 1;
@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     await connection.query(volumeInsertSql);
     
     connection.end();
-    res.status(200).json({ result: "OK" })
+    res.status(200).json({ result: "DONE" })
 }
 
 const createVolumeInsertSql = (comicId: number, usUrlList: string[]) => {
