@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/NewPublishedComic.module.css';
 import axios from "components/utils/ApiUtil";
+import * as stringUtil from "components/utils/StringUtil";
 
 const NewPublishedComic: NextPage = () => {
     const [usUrl, setUsUrl] = useState("");
@@ -21,16 +22,10 @@ const NewPublishedComic: NextPage = () => {
             return;
         }
 
-        const params = JSON.stringify({
-            usUrl: usUrl,
-            usTitle: usTitle,
-            volumeNum: volumeNum,
-            asin: asin
-        });
         const res = await axios.get("/api/registerNewPublishedComic"
             , {params: {
                 usUrl: usUrl,
-                usTitle: usTitle,
+                usTitle: stringUtil.replaceIllegalString(usTitle),
                 volumeNum: volumeNum,
                 asin: asin
             }}

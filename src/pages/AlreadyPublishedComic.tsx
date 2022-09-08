@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/AlreadyPublishedComic.module.css';
 import axios from "components/utils/ApiUtil";
+import * as stringUtil from "components/utils/StringUtil";
 
 const AlreadyPublishedComic: NextPage = () => {
     const [jpTitle, setJpTitle] = useState("");
@@ -20,15 +21,10 @@ const AlreadyPublishedComic: NextPage = () => {
             return;
         }
 
-        const params = JSON.stringify({
-            jpTitle: jpTitle,
-            usTitle: usTitle,
-            usUrls: usUrls
-        });
         const res = await axios.get("/api/registerAlreadyPublishedComic"
             , {params: {
-                jpTitle: jpTitle,
-                usTitle: usTitle,
+                jpTitle: stringUtil.replaceIllegalString(jpTitle),
+                usTitle: stringUtil.replaceIllegalString(usTitle),
                 usUrls: usUrls
             }}
         );
