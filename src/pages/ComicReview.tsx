@@ -6,14 +6,15 @@ import axios from "components/utils/ApiUtil";
 import * as stringUtil from "components/utils/StringUtil";
 
 const ComicReview: NextPage = () => {
+    const reviewCount = 5;
     const [usTitle, setUsTitle] = useState("");
     const [volumeNum, setVolumeNum] = useState("");
-    const [star, setStar] = useState("");
-    const [review, setReview] = useState("");
+    const [stars, setStars] = useState([...Array(reviewCount)].map(() => ""));
+    const [reviews, setReviews] = useState([...Array(reviewCount)].map(() => ""));
 
     const doRegister = async () => {
 
-        if (usTitle == "" || volumeNum == "" || star == "" || review == "") {
+        if (usTitle == "" || volumeNum == "") {
             alert("Can not insert null.");
             return;
         }
@@ -26,15 +27,11 @@ const ComicReview: NextPage = () => {
             , {params: {
                 usTitle: stringUtil.replaceIllegalString(usTitle),
                 volumeNum: volumeNum,
-                star: star,
-                review: stringUtil.replaceIllegalString(review)
             }}
         );
         alert(res.data.result);
         setUsTitle("");
         setVolumeNum("");
-        setStar("");
-        setReview("");
     }
 
     return (
@@ -49,16 +46,23 @@ const ComicReview: NextPage = () => {
                     <h3>Volume Number</h3>
                     <input type="text" value={volumeNum} onChange={(event) => setVolumeNum(event.target.value)}></input>
                 </div><br />
-                <div className="row">
-                    <h3>Star</h3>
-                    <input type="text" value={star} onChange={(event) => setStar(event.target.value)}></input>
-                </div><br />
-                <div className="row">
-                    <h3>Review</h3>
-                    <textarea rows={5} value={review} onChange={(event) => setReview(event.target.value)}></textarea>
-                </div>
-                <div>char count: {review.length}</div>
-                <br />
+                {reviews.map((review, index) => {
+                    return (
+                        <div key={"review" + index}>
+                            <div className="row">
+                                <h3>Star[{index + 1}]</h3>
+                                <input type="text" value={stars[index]}
+                                    onChange={(event) => setStars(stars.map((star, index) => (index === index ? event.target.value : star)))}></input>
+                            </div><br />
+                            <div className="row">
+                                <h3>Review[{index + 1}]</h3>
+                                <textarea rows={5} value={review}
+                                    onChange={(event) => setReviews(reviews.map((review, index) => (index === index ? event.target.value : review)))}></textarea>
+                            </div>
+                            <div>char count: {review.length}</div><br />
+                        </div>
+                    )}) 
+                }
                 <button type="button" className={styles.registerButton} onClick={doRegister}>
                     Register
                 </button>
