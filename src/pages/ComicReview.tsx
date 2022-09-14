@@ -46,18 +46,18 @@ const ComicReview: NextPage = () => {
                     <h3>Volume Number</h3>
                     <input type="text" value={volumeNum} onChange={(event) => setVolumeNum(event.target.value)}></input>
                 </div><br />
-                {reviews.map((review, index) => {
+                {reviews.map((review, outerIndex) => {
                     return (
-                        <div key={"review" + index}>
+                        <div key={"review" + outerIndex}>
                             <div className="row">
-                                <h3>Star[{index + 1}]</h3>
-                                <input type="text" value={stars[index]}
-                                    onChange={(event) => setStars(stars.map((star, index) => (index === index ? event.target.value : star)))}></input>
+                                <h3>Star[{outerIndex + 1}]</h3>
+                                <input type="text" value={stars[outerIndex]}
+                                    onChange={(event) => setStars(stars.map((star, innerIndex) => (innerIndex === outerIndex ? event.target.value : star)))}></input>
                             </div><br />
                             <div className="row">
-                                <h3>Review[{index + 1}]</h3>
+                                <h3>Review[{outerIndex + 1}]</h3>
                                 <textarea rows={5} value={review}
-                                    onChange={(event) => setReviews(reviews.map((review, index) => (index === index ? event.target.value : review)))}></textarea>
+                                    onChange={(event) => setReviews(reviews.map((review, innerIndex) => (innerIndex === outerIndex ? event.target.value : review)))}></textarea>
                             </div>
                             <div>char count: {review.length}</div><br />
                         </div>
