@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/ComicReview.module.css';
 import axios from "components/utils/ApiUtil";
 import * as stringUtil from "components/utils/StringUtil";
+import Select from 'react-select';
+
+type Data = {
+    value: string,
+    label: string
+}
 
 const ComicReview: NextPage = () => {
     const reviewCount = 5;
-    const [usTitle, setUsTitle] = useState("");
+    const [comicId, setComicId] = useState("");
     const [volumeNum, setVolumeNum] = useState("");
     const [stars, setStars] = useState([...Array(reviewCount)].map(() => ""));
     const [reviews, setReviews] = useState([...Array(reviewCount)].map(() => ""));
+    const [comics, setComics] = useState<Data[]>([]);
+
+    useEffect(() => { 
+        fetchUsComicTitle();
+    }, []);
+
+    const fetchUsComicTitle = async () => {
+        const res = await axios.get("/api/fetchUsComicTitle");
+        setComics(res.data);
+    }
+    
 
     const doRegister = async () => {
 
-        if (usTitle == "" || volumeNum == "") {
+        if (comicId == "" || volumeNum == "") {
             alert("Can not insert null.");
             return;
         }
@@ -25,12 +42,12 @@ const ComicReview: NextPage = () => {
 
         const res = await axios.get("/api/registerComicReview"
             , {params: {
-                usTitle: stringUtil.replaceIllegalString(usTitle),
+                usTitle: stringUtil.replaceIllegalString(comicId),
                 volumeNum: volumeNum,
             }}
         );
         alert(res.data.result);
-        setUsTitle("");
+        setComicId("");
         setVolumeNum("");
     }
 
@@ -40,7 +57,7 @@ const ComicReview: NextPage = () => {
             <div className={styles.container}>
                 <div className="row">
                     <h3>Us Title</h3>
-                    <input type="text" value={usTitle} onChange={(event) => setUsTitle(event.target.value)}></input>
+                    <Select id="usTitleSelect" instanceId="usTitleSelect" options={comics} onChange={(e) => setComicId(e!.value)} />
                 </div><br />
                 <div className="row">
                     <h3>Volume Number</h3>
