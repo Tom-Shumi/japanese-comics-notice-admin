@@ -42,13 +42,17 @@ const ComicReview: NextPage = () => {
 
         const res = await axios.get("/api/registerComicReview"
             , {params: {
-                usTitle: stringUtil.replaceIllegalString(comicId),
+                comicId: comicId,
                 volumeNum: volumeNum,
+                stars: stars.join("_"),
+                reviews: reviews.join("_")
             }}
         );
         alert(res.data.result);
         setComicId("");
         setVolumeNum("");
+        setStars([...Array(reviewCount)].map(() => ""));
+        setReviews([...Array(reviewCount)].map(() => ""));
     }
 
     return (
