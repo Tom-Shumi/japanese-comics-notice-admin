@@ -49,4 +49,14 @@ CREATE TABLE `lineAccount` (
     `id` int NOT NULL AUTO_INCREMENT,
     `lineUserId` varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `reservableVolume` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `asin` varchar(10)  NOT NULL UNIQUE,
+    `englishTitle` varchar(255) NOT NULL,
+    `volumeNum` int NOT NULL,
+    `usUrl` varchar(255) NOT NULL,
+    `releaseDate`  DATE NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

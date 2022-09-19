@@ -20,7 +20,7 @@ const NewPublishedComicList: NextPage = () => {
     return (
         <Layout>
             <h2>◆New Published Comic List</h2>
-            <h4>New Volume Count: {newVolumes.length}</h4>
+            <h4>New Comic Count: {newVolumes.length}</h4>
             <div className={styles.container}>
                 <table>
                     <thead>
@@ -51,4 +51,4 @@ const NewPublishedComicList: NextPage = () => {
     )
 }
 
-export default NewPublishedComicList
+export default NewPublishedComicList;
