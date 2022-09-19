@@ -7,6 +7,6 @@ hooks:
   ApplicationStart:
     - location: scripts/codedeploy_ApplicationStart.sh
       timeout: 180
-  AppricationStop:
-    - location: scripts/codedeploy_AppricationStop.sh
+  ApplicationStop:
+    - location: scripts/codedeploy_ApplicationStop.sh
       timeout: 180
