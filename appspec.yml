@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user
+    destination: /home/ec2-user/japanese-comics-notice-admin
 hooks:
   ApplicationStart:
     - location: scripts/codedeploy_ApplicationStart.sh
