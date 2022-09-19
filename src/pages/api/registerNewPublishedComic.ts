@@ -8,9 +8,9 @@ type Data = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const connection = await db();
     
-    let newVolumeInsertSql = `INSERT INTO newVolume (asin, englishTitle, volumeNum, url, usUrl) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '_', '${req.query.usUrl}')`;
+    let insertSql = `INSERT INTO newVolume (asin, englishTitle, volumeNum, url, usUrl) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '_', '${req.query.usUrl}')`;
     
-    await connection.query(newVolumeInsertSql);
+    await connection.query(insertSql);
 
     connection.end();
     res.status(200).json({ result: "DONE" })
