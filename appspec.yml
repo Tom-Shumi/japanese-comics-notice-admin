@@ -10,3 +10,7 @@ hooks:
   ApplicationStop:
     - location: scripts/codedeploy_ApplicationStop.sh
       timeout: 180
+  ValidateService:
+    - location: scripts/codedeploy_clear_file.sh
+      timeout: 180
+      runas: root

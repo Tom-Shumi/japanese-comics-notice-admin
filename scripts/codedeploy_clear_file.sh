@@ -1,0 +1,1 @@
+rm -Rf /opt/codedeploy-agent/deployment-root/*
