@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/japanese-comics-notice-admin
+    overwrite: true
+file_exists_behavior: OVERWRITE
 hooks:
   ApplicationStart:
     - location: scripts/codedeploy_ApplicationStart.sh
