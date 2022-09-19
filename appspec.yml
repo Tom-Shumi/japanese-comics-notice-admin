@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user
+hooks:
+  ApplicationStart:
+    - location: scripts/codedeploy_ApplicationStart.sh
+      timeout: 180
+  AppricationStop:
+    - location: scripts/codedeploy_AppricationStop.sh
+      timeout: 180

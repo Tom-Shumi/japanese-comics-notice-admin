@@ -17,7 +17,7 @@ const Menu: NextPage = () => {
                 <a className={styles.menuItem}>NewPublishedComic</a>
             </Link>
             <Link href="/ComicReview">
-                <a className={styles.menuItem}>ComicReview</a>
+                <a className={styles.menuItem}>ComicReview【WIP】</a>
             </Link>            
         </BurgetMenu>
     );
