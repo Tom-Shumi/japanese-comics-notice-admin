@@ -10,11 +10,15 @@ const Menu: NextPage = () => {
             <Link href="/">
                 <a className={styles.menuItem}>Home</a>
             </Link>
-            <Link href="/AlreadyPublishedComic">
-                <a className={styles.menuItem}>AlreadyPublishedComic</a>
+            <div className={styles.categoryDiv}>NewPublishedComic</div>
+            <Link href="/NewPublishedComicList">
+                <a className={styles.menuSubItem}>List</a>
             </Link>
             <Link href="/NewPublishedComic">
-                <a className={styles.menuItem}>NewPublishedComic</a>
+                <a className={styles.menuSubItem}>Register</a>
+            </Link>
+            <Link href="/AlreadyPublishedComic">
+                <a className={styles.menuItem}>AlreadyPublishedComic</a>
             </Link>
             <Link href="/ComicReview">
                 <a className={styles.menuItem}>ComicReview【WIP】</a>
