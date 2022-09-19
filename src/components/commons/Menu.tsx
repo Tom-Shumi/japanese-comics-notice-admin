@@ -18,17 +18,18 @@ const Menu: NextPage = () => {
                 <a className={styles.menuSubItem}>Register</a>
             </Link>
             <div className={styles.categoryDiv}>ReservableComic</div>
-            <Link href="/NewPublishedComicList">
+            <Link href="/ReservableComicList">
                 <a className={styles.menuSubItem}>List</a>
             </Link>
             <Link href="/ReservableComic">
                 <a className={styles.menuSubItem}>Register</a>
             </Link>
+            <div className={styles.categoryDiv}>Deprecated</div>
             <Link href="/AlreadyPublishedComic">
-                <a className={styles.menuItem}>AlreadyPublishedComic</a>
+                <a className={styles.menuSubItem}>AlreadyPublished</a>
             </Link>
             <Link href="/ComicReview">
-                <a className={styles.menuItem}>ComicReview【WIP】</a>
+                <a className={styles.menuSubItem}>ComicReview[WIP]</a>
             </Link>            
         </BurgetMenu>
     );
