@@ -3,13 +3,8 @@ import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/ComicReview.module.css';
 import axios from "components/utils/ApiUtil";
-import * as stringUtil from "components/utils/StringUtil";
 import Select from 'react-select';
-
-type Data = {
-    value: string,
-    label: string
-}
+import { Data } from './api/fetchUsComicTitle';
 
 const ComicReview: NextPage = () => {
     const reviewCount = 5;
