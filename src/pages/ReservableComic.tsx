@@ -57,7 +57,7 @@ const ReservableComic: NextPage = () => {
                     <input type="text" value={volumeNum} onChange={(event) => setVolumeNum(event.target.value)}></input>
                 </div><br />
                 <div className="row">
-                    <h3>Release Date(yyyy/mm/dd)</h3>
+                    <h3>Release Date</h3>
                     <input type="text" value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}></input>
                 </div><br />
                 <div className="row">
