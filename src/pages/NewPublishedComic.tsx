@@ -11,6 +11,13 @@ const NewPublishedComic: NextPage = () => {
     const [volumeNum, setVolumeNum] = useState("");
     const [asin, setAsin] = useState("");
 
+    const doClear = () => {
+        setUsUrl("");
+        setUsTitle("");
+        setVolumeNum("");
+        setAsin("");
+    }
+
     const doRegister = async () => {
 
         if (usUrl == "" || usTitle == "" || volumeNum == "" || asin == "") {
@@ -41,6 +48,9 @@ const NewPublishedComic: NextPage = () => {
         <Layout color='yellow'>
             <h2>◆New Published Comic</h2>
             <div className={styles.container}>
+                <button type="button" className={styles.registerButton} onClick={doClear}>
+                    Clear
+                </button><br />
                 <div className="row">
                     <h3>Us Url</h3>
                     <input type="text" value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
