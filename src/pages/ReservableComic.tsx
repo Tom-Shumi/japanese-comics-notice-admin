@@ -41,7 +41,7 @@ const ReservableComic: NextPage = () => {
     }
 
     return (
-        <Layout>
+        <Layout color='red'>
             <h2>◆Reservable Comic</h2>
             <div className={styles.container}>
                 <div className="row">

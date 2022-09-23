@@ -1,9 +1,7 @@
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   margin-top: 1rem;
   margin-left: 10%;
   margin-right: 10%;
@@ -119,4 +117,16 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.yellow {
+  background-color: lightyellow;
+}
+
+.red {
+  background-color: mistyrose;
+}
+
+.white {
+  background-color: white;
 }

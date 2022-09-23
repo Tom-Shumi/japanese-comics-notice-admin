@@ -38,7 +38,7 @@ const NewPublishedComic: NextPage = () => {
     }
 
     return (
-        <Layout>
+        <Layout color='yellow'>
             <h2>◆New Published Comic</h2>
             <div className={styles.container}>
                 <div className="row">

@@ -51,7 +51,7 @@ const ComicReview: NextPage = () => {
     }
 
     return (
-        <Layout>
+        <Layout color='white'>
             <h2>◆Comic Review</h2>
             <div className={styles.container}>
                 <div className="row">

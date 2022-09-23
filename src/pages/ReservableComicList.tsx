@@ -18,7 +18,7 @@ const ReservableComicList: NextPage = () => {
     }
     
     return (
-        <Layout>
+        <Layout color='red'>
             <h2>◆Reservable Comic List</h2>
             <h4>Reservable Comic Count: {reservableVolumes.length}</h4>
             <div className={styles.container}>

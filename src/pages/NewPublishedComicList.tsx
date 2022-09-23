@@ -18,7 +18,7 @@ const NewPublishedComicList: NextPage = () => {
     }
     
     return (
-        <Layout>
+        <Layout color='yellow'>
             <h2>◆New Published Comic List</h2>
             <h4>New Comic Count: {newVolumes.length}</h4>
             <div className={styles.container}>
