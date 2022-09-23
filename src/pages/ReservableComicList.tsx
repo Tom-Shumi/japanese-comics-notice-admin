@@ -7,6 +7,7 @@ import { Data } from './api/fetchReservableComic';
 
 const ReservableComicList: NextPage = () => {
     const [reservableVolumes, setReservableVolumes] = useState<Data[]>([]);
+    const [seachedTitle, setSeachedTitle] = useState("");
     
     useEffect(() => { 
         fetchReservableComic();
@@ -14,6 +15,14 @@ const ReservableComicList: NextPage = () => {
 
     const fetchReservableComic = async () => {
         const res = await axios.get("/api/fetchReservableComic");
+        setReservableVolumes(res.data);
+    }
+
+    const search = async () => {
+        const res = await axios.get("/api/fetchReservableComic"
+        , {params: {
+            title: seachedTitle
+        }});
         setReservableVolumes(res.data);
     }
 
@@ -34,6 +43,10 @@ const ReservableComicList: NextPage = () => {
     return (
         <Layout color='red'>
             <h2>◆Reservable Comic List</h2>
+            <div>
+                <input type="text" value={seachedTitle} onChange={(event) => setSeachedTitle(event.target.value)} className={styles.searchText} />
+                <button type="button" className={styles.searchButton} onClick={search}>Search</button>
+            </div>
             <h4>Reservable Comic Count: {reservableVolumes.length}</h4>
             <div className={styles.container}>
                 <table>
