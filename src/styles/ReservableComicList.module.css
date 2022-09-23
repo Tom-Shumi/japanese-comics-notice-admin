@@ -5,3 +5,14 @@
 .tableTd {
     padding: 10px;
 }
+
+.searchText {
+    width: 70%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.searchButton {
+    width: 100px;
+    height: 40px;
+}

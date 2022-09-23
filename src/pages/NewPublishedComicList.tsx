@@ -7,6 +7,7 @@ import { Data } from './api/fetchNewPublishedComic';
 
 const NewPublishedComicList: NextPage = () => {
     const [newVolumes, setNewVolumes] = useState<Data[]>([]);
+    const [seachedTitle, setSeachedTitle] = useState("");
     
     useEffect(() => { 
         fetchNewPublishedComic();
@@ -14,6 +15,14 @@ const NewPublishedComicList: NextPage = () => {
 
     const fetchNewPublishedComic = async () => {
         const res = await axios.get("/api/fetchNewPublishedComic");
+        setNewVolumes(res.data);
+    }
+
+    const search = async () => {
+        const res = await axios.get("/api/fetchNewPublishedComic"
+        , {params: {
+            title: seachedTitle
+        }});
         setNewVolumes(res.data);
     }
 
@@ -34,6 +43,10 @@ const NewPublishedComicList: NextPage = () => {
     return (
         <Layout color='yellow'>
             <h2>◆New Published Comic List</h2>
+            <div>
+                <input type="text" value={seachedTitle} onChange={(event) => setSeachedTitle(event.target.value)} className={styles.searchText} />
+                <button type="button" className={styles.searchButton} onClick={search}>Search</button>
+            </div>
             <h4>New Comic Count: {newVolumes.length}</h4>
             <div className={styles.container}>
                 <table>

@@ -14,7 +14,20 @@ export type Data = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const connection = await db();
     
-    const reservableVolume = await connection.query("SELECT * FROM reservableVolume ORDER BY id DESC");
+    let executeQuery;
+    const selectQuery = "SELECT * FROM reservableVolume ";
+    const orderBy = "ORDER BY id DESC";
+
+    if (req.query.title == undefined || req.query.title == "") {
+        executeQuery = selectQuery + orderBy;
+        
+    } else {
+        const condition = `WHERE englishTitle LIKE '%${req.query.title}%' `
+    
+        executeQuery = selectQuery + condition + orderBy;
+    }
+
+    const reservableVolume = await connection.query(executeQuery);
     reservableVolume.map((volume: any) => (
         volume.releaseDate = convertDbDateTimeToDateString(volume.releaseDate)
     ));
