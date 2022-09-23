@@ -16,7 +16,21 @@ const NewPublishedComicList: NextPage = () => {
         const res = await axios.get("/api/fetchNewPublishedComic");
         setNewVolumes(res.data);
     }
-    
+
+    const deleteNewPublishedComic = async (id: number) => {
+        if (!confirm("OK?")) {
+            return;
+        }
+
+        const res = await axios.get("/api/deleteNewPublishedComic"
+        , {params: {
+            id: id
+        }});
+
+        alert(res.data.result);
+        fetchNewPublishedComic();
+    }
+
     return (
         <Layout color='yellow'>
             <h2>◆New Published Comic List</h2>
@@ -30,6 +44,7 @@ const NewPublishedComicList: NextPage = () => {
                             <th className={styles.tableTh}>VOLUME</th>
                             <th className={styles.tableTh}>URL</th>
                             <th className={styles.tableTh}>CREATED</th>
+                            <th className={styles.tableTh}>DELETE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +56,11 @@ const NewPublishedComicList: NextPage = () => {
                                     <td className={styles.tableTd}>{newVolume.volumeNum}</td>
                                     <td className={styles.tableTd}><a href={newVolume.usUrl} target="_blank" rel="noopener noreferrer">{newVolume.usUrl}</a></td>
                                     <td className={styles.tableTd}>{newVolume.created_at}</td>
+                                    <td className={styles.tableTd}>
+                                        <button type="button" onClick={() => deleteNewPublishedComic(newVolume.id)}>
+                                            DELETE
+                                        </button>
+                                    </td>
                                 </tr>
                             ))
                         }

@@ -16,6 +16,20 @@ const ReservableComicList: NextPage = () => {
         const res = await axios.get("/api/fetchReservableComic");
         setReservableVolumes(res.data);
     }
+
+    const deleteReservableComic = async (id: number) => {
+        if (!confirm("OK?")) {
+            return;
+        }
+
+        const res = await axios.get("/api/deleteReservableComic"
+        , {params: {
+            id: id
+        }});
+
+        alert(res.data.result);
+        fetchReservableComic();
+    }
     
     return (
         <Layout color='red'>
@@ -30,6 +44,7 @@ const ReservableComicList: NextPage = () => {
                             <th className={styles.tableTh}>VOLUME</th>
                             <th className={styles.tableTh}>URL</th>
                             <th className={styles.tableTh}>RELEASE</th>
+                            <th className={styles.tableTh}>DELETE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +56,11 @@ const ReservableComicList: NextPage = () => {
                                     <td className={styles.tableTd}>{reservableVolume.volumeNum}</td>
                                     <td className={styles.tableTd}><a href={reservableVolume.usUrl} target="_blank" rel="noopener noreferrer">{reservableVolume.usUrl}</a></td>
                                     <td className={styles.tableTd}>{reservableVolume.releaseDate}</td>
+                                    <td className={styles.tableTd}>
+                                        <button type="button" onClick={() => deleteReservableComic(reservableVolume.id)}>
+                                            DELETE
+                                        </button>
+                                    </td>
                                 </tr>
                             ))
                         }
