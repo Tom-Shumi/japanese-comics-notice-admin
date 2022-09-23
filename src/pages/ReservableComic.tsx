@@ -12,6 +12,14 @@ const ReservableComic: NextPage = () => {
     const [releaseDate, setReleaseDate] = useState("");
     const [asin, setAsin] = useState("");
 
+    const doClear = () => {
+        setUsUrl("");
+        setUsTitle("");
+        setVolumeNum("");
+        setReleaseDate("");
+        setAsin("");
+    }
+    
     const doRegister = async () => {
 
         if (usUrl == "" || usTitle == "" || volumeNum == "" || releaseDate == "" || asin == "") {
@@ -44,6 +52,9 @@ const ReservableComic: NextPage = () => {
         <Layout color='red'>
             <h2>◆Reservable Comic</h2>
             <div className={styles.container}>
+                <button type="button" className={styles.registerButton} onClick={doClear}>
+                    Clear
+                </button><br />
                 <div className="row">
                     <h3>Us Url</h3>
                     <input type="text" value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>

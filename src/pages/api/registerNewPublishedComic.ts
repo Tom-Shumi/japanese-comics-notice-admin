@@ -10,7 +10,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     
     let insertSql = `INSERT INTO newVolume (asin, englishTitle, volumeNum, url, usUrl) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '_', '${req.query.usUrl}')`;
     
-    await connection.query(insertSql);
+    try {
+        await connection.query(insertSql);
+    } catch(error) {
+        connection.end();
+        res.status(200).json({ result: "ERROR" });
+    }
 
     connection.end();
     res.status(200).json({ result: "DONE" })

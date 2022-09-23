@@ -18,8 +18,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     let comicInsertSql = `insert into comic(id, japaneseTitle, englishTitle) values (${nextRegisterComicId}, '${req.query.jpTitle}', '${req.query.usTitle}')`;
     let volumeInsertSql = createVolumeInsertSql(nextRegisterComicId, usUrlList);
 
-    await connection.query(comicInsertSql);
-    await connection.query(volumeInsertSql);
+    try {
+        await connection.query(comicInsertSql);
+        await connection.query(volumeInsertSql);
+    } catch(error) {
+        connection.end();
+        res.status(200).json({ result: "ERROR" });
+    }
     
     connection.end();
     res.status(200).json({ result: "DONE" })
