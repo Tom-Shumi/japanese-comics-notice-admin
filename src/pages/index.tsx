@@ -4,7 +4,7 @@ import styles from 'styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout color='white'>
       <h2>
         <ul>
           <li>Twitterアカウント：

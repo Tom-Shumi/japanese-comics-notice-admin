@@ -35,7 +35,7 @@ const AlreadyPublishedComic: NextPage = () => {
     }
 
     return (
-        <Layout>
+        <Layout color='white'>
             <h2>◆Already Published Comic</h2>
             <div className={styles.container}>
                 <div className="row">
