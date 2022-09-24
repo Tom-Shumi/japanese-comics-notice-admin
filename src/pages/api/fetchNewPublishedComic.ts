@@ -1,3 +1,4 @@
+import { convertDbDateTimeToDateString } from 'components/utils/DateUtil';
 import db from 'components/utils/DbUtil';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -29,6 +30,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     const newVolume = await connection.query(executeQuery);
 
+    newVolume.map((volume: any) => (
+        volume.created_at = convertDbDateTimeToDateString(volume.created_at)
+    ));
+    
     connection.end();
     res.status(200).json(newVolume)
 }
