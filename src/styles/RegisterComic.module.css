@@ -8,3 +8,13 @@
     margin: 0px auto;
     margin-bottom: 20px;
 }
+
+.asinText {
+    width: 400px;
+    margin-right: 20px;
+}
+
+.checkAsinButton {
+    width: 100px;
+    height: 40px;
+}
