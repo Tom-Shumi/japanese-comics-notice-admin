@@ -60,3 +60,5 @@ CREATE TABLE `reservableVolume` (
     `releaseDate`  DATE NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE `newVolume` ADD `releaseDate`  DATE;
