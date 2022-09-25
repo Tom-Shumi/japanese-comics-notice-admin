@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import type { NextPage } from 'next';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/RegisterComic.module.css';
@@ -11,6 +11,9 @@ const RegisterComic: NextPage = () => {
     const [volumeNum, setVolumeNum] = useState("");
     const [releaseDate, setReleaseDate] = useState("");
     const [asin, setAsin] = useState("");
+
+    const refAsin = useRef<HTMLInputElement>(null);
+    const refUsUrl = useRef<HTMLInputElement>(null);
     
     const doRegister = async () => {
 
@@ -38,10 +41,12 @@ const RegisterComic: NextPage = () => {
         setVolumeNum("");
         setReleaseDate("");
         setAsin("");
+        refAsin.current?.focus();
     }
 
     const checkAsin = async () => {
         if (asin == "") {
+            refAsin.current?.focus();
             return;
         }
 
@@ -59,8 +64,12 @@ const RegisterComic: NextPage = () => {
             setUsTitle("");
             setVolumeNum("");
             setReleaseDate("");
-            setAsin("");    
+            setAsin("");
+            refAsin.current?.focus();
+            return;
         }
+
+        refUsUrl.current?.focus();
     }
 
     return (
@@ -70,13 +79,13 @@ const RegisterComic: NextPage = () => {
                 <div className="row">
                     <h3>ASIN</h3>
                     <div>
-                        <input type="text" className={styles.asinText} value={asin} onChange={(event) => setAsin(event.target.value)}></input>
+                        <input type="text" ref={refAsin} className={styles.asinText} value={asin} onChange={(event) => setAsin(event.target.value)}></input>
                         <button type="button" className={styles.checkAsinButton} onClick={checkAsin}>Check</button>
                     </div>
                 </div><br />
                 <div className="row">
                     <h3>Us Url</h3>
-                    <input type="text" value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
+                    <input type="text" ref={refUsUrl} value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
                 </div><br />
                 <div className="row">
                     <h3>Us Title</h3>
