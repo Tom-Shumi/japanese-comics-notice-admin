@@ -13,7 +13,7 @@ const RegisterComic: NextPage = () => {
     const [asin, setAsin] = useState("");
 
     const refAsin = useRef<HTMLInputElement>(null);
-    const refUsUrl = useRef<HTMLInputElement>(null);
+    const refReleaseDate = useRef<HTMLInputElement>(null);
     
     const doRegister = async () => {
 
@@ -69,7 +69,7 @@ const RegisterComic: NextPage = () => {
             return;
         }
 
-        refUsUrl.current?.focus();
+        refReleaseDate.current?.focus();
     }
 
     return (
@@ -85,11 +85,11 @@ const RegisterComic: NextPage = () => {
                 </div><br />
                 <div className="row">
                     <h3>Release Date</h3>
-                    <input type="text" value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}></input>
+                    <input type="text" ref={refReleaseDate} value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)}></input>
                 </div><br />
                 <div className="row">
                     <h3>Us Url</h3>
-                    <input type="text" ref={refUsUrl} value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
+                    <input type="text" value={usUrl} onChange={(event) => setUsUrl(event.target.value)}></input>
                 </div><br />
                 <div className="row">
                     <h3>Us Title</h3>
