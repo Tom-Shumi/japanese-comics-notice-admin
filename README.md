@@ -1,7 +1,7 @@
 # japanese-comics-notice-admin
 ## Usage
 英語に翻訳された漫画・ラノベを紹介するTwitterアカウントの管理用アプリケーション
-https://twitter.com/JapaneseComicss
+Twitterアカウント: https://twitter.com/JapaneseComicss
 
 ## Environment
 - Typescript
