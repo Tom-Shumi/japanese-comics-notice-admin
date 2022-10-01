@@ -70,9 +70,9 @@ const List: React.FC<ListProps> = (props) => {
                             volumes.map((volume) => (
                                 <tr key={"volume" + volume.id}>
                                     <td className={styles.tableTd}>{volume.asin}</td>
-                                    <td className={styles.tableTd}>{volume.englishTitle}</td>
+                                    <td className={styles.tableTd}>{volume.title}</td>
                                     <td className={styles.tableTd}>{volume.volumeNum}</td>
-                                    <td className={styles.tableTd}><a href={volume.usUrl} target="_blank" rel="noopener noreferrer">{volume.usUrl}</a></td>
+                                    <td className={styles.tableTd}><a href={volume.url} target="_blank" rel="noopener noreferrer">{volume.url}</a></td>
                                     <td className={styles.tableTd}>{volume.releaseDate}</td>
                                     <td className={styles.tableTd}>
                                         <button type="button" onClick={() => deleteComic(volume.id)}>

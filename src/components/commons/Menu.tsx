@@ -21,13 +21,13 @@ const Menu: NextPage = () => {
                 <a className={styles.menuSubItem}>ReservableList</a>
             </Link>
             <div className={styles.categoryDiv}>ライトノベル</div>
-            <Link href="/RegisterComic">
+            <Link href="/RegisterLightNovel">
                 <a className={styles.menuSubItem}>登録</a>
             </Link>
-            <Link href="/NewPublishedComicList">
+            <Link href="/NewPublishedLightNovelList">
                 <a className={styles.menuSubItem}>新刊リスト</a>
             </Link>
-            <Link href="/ReservableComicList">
+            <Link href="/ReservableLightNovelList">
                 <a className={styles.menuSubItem}>予約可能リスト</a>
             </Link>    
         </BurgetMenu>

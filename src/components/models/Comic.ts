@@ -2,10 +2,9 @@
 export type Comic = {
     id: number,
     asin: string,
-    englishTitle: string,
+    title: string,
     volumeNum: number,
     url: string,
     created_at: string,
-    usUrl: string,
     releaseDate: string
 }

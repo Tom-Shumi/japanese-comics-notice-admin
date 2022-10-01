@@ -23,11 +23,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Comic>) => {
     const newVolume = await connection.query(executeQuery);
 
     newVolume.map((volume: any) => (
-        volume.created_at = convertDbDateTimeToDateString(volume.created_at)
+        convertToComic(volume)
     ));
     
     connection.end();
     res.status(200).json(newVolume)
+}
+
+const convertToComic = (volume: any) => {
+    volume.releaseDate = convertDbDateTimeToDateString(volume.releaseDate);
+    volume.title = volume.englishTitle;
+    volume.url = volume.usUrl;
 }
 
 export default handler;

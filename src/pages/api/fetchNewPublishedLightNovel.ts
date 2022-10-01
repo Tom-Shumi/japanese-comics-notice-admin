@@ -8,31 +8,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Comic>) => {
     const connection = await db();
     
     let executeQuery;
-    const selectQuery = "SELECT * FROM reservableVolume ";
+    const selectQuery = "SELECT * FROM newVolumeLightNovel ";
     const orderBy = "ORDER BY id DESC";
 
     if (req.query.title == undefined || req.query.title == "") {
         executeQuery = selectQuery + orderBy;
-        
+
     } else {
-        const condition = `WHERE englishTitle LIKE '%${req.query.title}%' `
-    
+        const condition = `WHERE title LIKE '%${req.query.title}%' `
+
         executeQuery = selectQuery + condition + orderBy;
     }
 
-    const reservableVolume = await connection.query(executeQuery);
-    reservableVolume.map((volume: any) => (
-        convertToComic(volume)
+    const newVolume = await connection.query(executeQuery);
+
+    newVolume.map((volume: any) => (
+        volume.releaseDate = convertDbDateTimeToDateString(volume.releaseDate)
     ));
-
+    
     connection.end();
-    res.status(200).json(reservableVolume)
-}
-
-const convertToComic = (volume: any) => {
-    volume.releaseDate = convertDbDateTimeToDateString(volume.releaseDate);
-    volume.title = volume.englishTitle;
-    volume.url = volume.usUrl;
+    res.status(200).json(newVolume)
 }
 
 export default handler;
