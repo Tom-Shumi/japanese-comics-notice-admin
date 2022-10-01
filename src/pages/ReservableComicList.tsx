@@ -1,10 +1,10 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import ComicList from 'components/commons/ComicList';
+import List from 'components/commons/List';
 
 const ReservableComicList: NextPage = () => {
     return (
-        <ComicList type="ReservableComic" color="red" />
+        <List type="ReservableComic" color="yellow" />
     )
 }
 

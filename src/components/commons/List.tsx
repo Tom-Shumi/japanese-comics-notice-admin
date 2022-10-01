@@ -4,12 +4,12 @@ import styles from 'styles/NewPublishedComicList.module.css';
 import axios from "components/utils/ApiUtil";
 import { Comic } from 'components/models/Comic';
 
-interface ComicListProps {
+interface ListProps {
     type: string
     color: string
 }
 
-const ComicList: React.FC<ComicListProps> = (props) => {
+const List: React.FC<ListProps> = (props) => {
     const [volumes, setVolumes] = useState<Comic[]>([]);
     const [seachedTitle, setSeachedTitle] = useState("");
     
@@ -89,4 +89,4 @@ const ComicList: React.FC<ComicListProps> = (props) => {
     )
 }
 
-export default ComicList;
+export default List;

@@ -1,10 +1,10 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import ComicList from 'components/commons/ComicList';
+import List from 'components/commons/List';
 
 const NewPublishedComicList: NextPage = () => {
     return (
-        <ComicList type="NewPublishedComic" color="yellow" />
+        <List type="NewPublishedComic" color="yellow" />
     )
 }
 
