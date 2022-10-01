@@ -13,9 +13,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const releaseDate = new Date(req.query.releaseDate as string);
     let releaseDateStr = convertUsDateToString(releaseDate);
 
-    console.log(releaseDate);
-    console.log(new Date(now.getFullYear(), now.getMonth(), now.getDate()));
-
     let insertSql;
     if (releaseDate > new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
         insertSql = `INSERT INTO reservableVolume (asin, englishTitle, volumeNum, usUrl, releaseDate) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '${req.query.usUrl}', '${releaseDateStr}')`;

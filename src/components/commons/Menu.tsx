@@ -10,24 +10,26 @@ const Menu: NextPage = () => {
             <Link href="/">
                 <a className={styles.menuItem}>Home</a>
             </Link>
+            <div className={styles.categoryDiv}>English Comic</div>
             <Link href="/RegisterComic">
-                <a className={styles.menuItem}>Register Comic</a>
+                <a className={styles.menuSubItem}>Register</a>
             </Link>
-            <div className={styles.categoryDiv}>NewPublishedComic</div>
             <Link href="/NewPublishedComicList">
-                <a className={styles.menuSubItem}>List</a>
+                <a className={styles.menuSubItem}>NewPublishedList</a>
             </Link>
-            <div className={styles.categoryDiv}>ReservableComic</div>
             <Link href="/ReservableComicList">
-                <a className={styles.menuSubItem}>List</a>
+                <a className={styles.menuSubItem}>ReservableList</a>
             </Link>
-            <div className={styles.categoryDiv}>Deprecated</div>
-            <Link href="/AlreadyPublishedComic">
-                <a className={styles.menuSubItem}>AlreadyPublished</a>
+            <div className={styles.categoryDiv}>ライトノベル</div>
+            <Link href="/RegisterComic">
+                <a className={styles.menuSubItem}>登録</a>
             </Link>
-            <Link href="/ComicReview">
-                <a className={styles.menuSubItem}>ComicReview[WIP]</a>
-            </Link>            
+            <Link href="/NewPublishedComicList">
+                <a className={styles.menuSubItem}>新刊リスト</a>
+            </Link>
+            <Link href="/ReservableComicList">
+                <a className={styles.menuSubItem}>予約可能リスト</a>
+            </Link>    
         </BurgetMenu>
     );
 }
