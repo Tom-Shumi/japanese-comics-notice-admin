@@ -1,4 +1,4 @@
-import { convertUsDateToString } from 'components/utils/DateUtil';
+import { convertDateToString } from 'components/utils/DateUtil';
 import db from 'components/utils/DbUtil';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -11,16 +11,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     
     const now = new Date();
     const releaseDate = new Date(req.query.releaseDate as string);
-    let releaseDateStr = convertUsDateToString(releaseDate);
-
-    console.log(releaseDate);
-    console.log(new Date(now.getFullYear(), now.getMonth(), now.getDate()));
+    let releaseDateStr = convertDateToString(releaseDate);
 
     let insertSql;
     if (releaseDate > new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-        insertSql = `INSERT INTO reservableVolume (asin, englishTitle, volumeNum, usUrl, releaseDate) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '${req.query.usUrl}', '${releaseDateStr}')`;
+        insertSql = `INSERT INTO reservableVolumeLightNovel (asin, title, volumeNum, url, releaseDate) VALUES ('${req.query.asin}', '${req.query.title}', ${req.query.volumeNum}, '${req.query.url}', '${releaseDateStr}')`;
     } else {
-        insertSql = `INSERT INTO newVolume (asin, englishTitle, volumeNum, url, usUrl, releaseDate) VALUES ('${req.query.asin}', '${req.query.usTitle}', ${req.query.volumeNum}, '_', '${req.query.usUrl}', '${releaseDateStr}')`;
+        insertSql = `INSERT INTO newVolumeLightNovel (asin, title, volumeNum, url, releaseDate, tweetCount) VALUES ('${req.query.asin}', '${req.query.title}', ${req.query.volumeNum}, '_', '${req.query.url}', '${releaseDateStr}', 0)`;
     }
     
     try {

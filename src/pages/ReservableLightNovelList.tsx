@@ -4,7 +4,7 @@ import List from 'components/commons/List';
 
 const ReservableComicList: NextPage = () => {
     return (
-        <List type="ReservableComic" color="yellow" />
+        <List type="ReservableLightNovel" color="red" />
     )
 }
 

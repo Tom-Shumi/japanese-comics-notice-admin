@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <div className={`${styles.container} ${styles[props.color]}`}>
       <Header />
       <Menu />
-      <h1>Japanese Comics Notice Admin</h1>
+      <h1>Comic &amp; LightNovel Notice Admin</h1>
       <hr />
       {props.children}
 

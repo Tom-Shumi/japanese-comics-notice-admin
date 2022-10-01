@@ -5,7 +5,7 @@ import Register from 'components/commons/Register';
 const RegisterComic: NextPage = () => {
 
     return (
-        <Register type="EnglishComic" color="yellow" />
+        <Register type="LightNovel" color="red" />
     )
 }
 
