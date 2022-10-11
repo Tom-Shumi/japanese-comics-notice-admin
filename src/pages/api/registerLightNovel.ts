@@ -15,9 +15,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     let insertSql;
     if (releaseDate > new Date(now.getFullYear(), now.getMonth(), now.getDate())) {
-        insertSql = `INSERT INTO reservableVolumeLightNovel (asin, title, volumeNum, url, releaseDate) VALUES ('${req.query.asin}', '${req.query.title}', ${req.query.volumeNum}, '${req.query.url}', '${releaseDateStr}')`;
+        insertSql = `INSERT INTO reservableVolumeLightNovel (asin, title, volumeNum, url, releaseDate) VALUES ('${req.query.asin}', '${req.query.title}', 0, '${req.query.url}', '${releaseDateStr}')`;
     } else {
-        insertSql = `INSERT INTO newVolumeLightNovel (asin, title, volumeNum, url, releaseDate, tweetCount) VALUES ('${req.query.asin}', '${req.query.title}', ${req.query.volumeNum}, '${req.query.url}', '${releaseDateStr}', 0)`;
+        insertSql = `INSERT INTO newVolumeLightNovel (asin, title, volumeNum, url, releaseDate, tweetCount) VALUES ('${req.query.asin}', '${req.query.title}', 0, '${req.query.url}', '${releaseDateStr}', 0)`;
     }
     
     try {

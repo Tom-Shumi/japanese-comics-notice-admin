@@ -59,7 +59,6 @@ const List: React.FC<ListProps> = (props) => {
                         <tr>
                             <th className={styles.tableTh}>ASIN</th>
                             <th className={styles.tableTh}>TITLE</th>
-                            <th className={styles.tableTh}>VOLUME</th>
                             <th className={styles.tableTh}>URL</th>
                             <th className={styles.tableTh}>RELEASE</th>
                             <th className={styles.tableTh}>DELETE</th>
@@ -71,7 +70,6 @@ const List: React.FC<ListProps> = (props) => {
                                 <tr key={"volume" + volume.id}>
                                     <td className={styles.tableTd}>{volume.asin}</td>
                                     <td className={styles.tableTd}>{volume.title}</td>
-                                    <td className={styles.tableTd}>{volume.volumeNum}</td>
                                     <td className={styles.tableTd}><a href={volume.url} target="_blank" rel="noopener noreferrer">{volume.url}</a></td>
                                     <td className={styles.tableTd}>{volume.releaseDate}</td>
                                     <td className={styles.tableTd}>

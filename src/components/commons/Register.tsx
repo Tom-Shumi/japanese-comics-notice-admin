@@ -13,7 +13,6 @@ interface RegisterProps {
 const Register: React.FC<RegisterProps> = (props) => {
     const [url, setUrl] = useState("");
     const [title, setTitle] = useState("");
-    const [volumeNum, setVolumeNum] = useState("");
     const [releaseDate, setReleaseDate] = useState("");
     const [asin, setAsin] = useState("");
 
@@ -22,7 +21,7 @@ const Register: React.FC<RegisterProps> = (props) => {
     
     const doRegister = async () => {
 
-        if (url == "" || title == "" || volumeNum == "" || releaseDate == "" || asin == "") {
+        if (url == "" || title == "" || releaseDate == "" || asin == "") {
             alert("Can not insert null.");
             return;
         }
@@ -35,7 +34,6 @@ const Register: React.FC<RegisterProps> = (props) => {
             , {params: {
                 url: url,
                 title: stringUtil.replaceIllegalString(title),
-                volumeNum: volumeNum,
                 releaseDate: releaseDate,
                 asin: asin
             }}
@@ -43,7 +41,6 @@ const Register: React.FC<RegisterProps> = (props) => {
         alert(res.data.result);
         setUrl("");
         setTitle("");
-        setVolumeNum("");
         setReleaseDate("");
         setAsin("");
         refAsin.current?.focus();
@@ -67,7 +64,6 @@ const Register: React.FC<RegisterProps> = (props) => {
         if (result == "NG") {
             setUrl("");
             setTitle("");
-            setVolumeNum("");
             setReleaseDate("");
             setAsin("");
             refAsin.current?.focus();
@@ -99,10 +95,6 @@ const Register: React.FC<RegisterProps> = (props) => {
                 <div className="row">
                     <h3>Title</h3>
                     <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input>
-                </div><br />
-                <div className="row">
-                    <h3>Volume Number</h3>
-                    <input type="text" value={volumeNum} onChange={(event) => setVolumeNum(event.target.value)}></input>
                 </div><br />
                 <button type="button" className={styles.registerButton} onClick={doRegister}>
                     Register
