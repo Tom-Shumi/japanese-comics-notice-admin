@@ -11,9 +11,9 @@ const Menu: NextPage = () => {
                 <a className={styles.menuItem}>Home</a>
             </Link>
             <div className={styles.categoryDiv}>English Comic</div>
-            <Link href="/RegisterComic">
+            {/* <Link href="/RegisterComic">
                 <a className={styles.menuSubItem}>Register</a>
-            </Link>
+            </Link> */}
             <Link href="/NewPublishedComicList">
                 <a className={styles.menuSubItem}>NewPublishedList</a>
             </Link>
