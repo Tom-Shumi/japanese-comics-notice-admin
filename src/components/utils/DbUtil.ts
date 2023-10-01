@@ -5,8 +5,8 @@ const db = () => {
     return mysql.createConnection({
         host: env.NEXT_PUBLIC_DB_HOST,
         user: env.NEXT_PUBLIC_DB_USER,
-        password: env.NEXT_PUBLIC_DB_NAME,
-        database: env.NEXT_PUBLIC_API_TASK_GRAPH,
+        password: env.NEXT_PUBLIC_DB_PASSWORD,
+        database: env.NEXT_PUBLIC_DB_NAME,
         multipleStatements: true
     });
 }
