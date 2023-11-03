@@ -10,16 +10,16 @@ const Menu: NextPage = () => {
             <Link href="/">
                 <a className={styles.menuItem}>Home</a>
             </Link>
-            <div className={styles.categoryDiv}>English Comic</div>
+            {/* <div className={styles.categoryDiv}>English Comic</div> */}
             {/* <Link href="/RegisterComic">
                 <a className={styles.menuSubItem}>Register</a>
             </Link> */}
-            <Link href="/NewPublishedComicList">
+            {/* <Link href="/NewPublishedComicList">
                 <a className={styles.menuSubItem}>NewPublishedList</a>
-            </Link>
-            <Link href="/ReservableComicList">
+            </Link> */}
+            {/* <Link href="/ReservableComicList">
                 <a className={styles.menuSubItem}>ReservableList</a>
-            </Link>
+            </Link> */}
             <div className={styles.categoryDiv}>ライトノベル</div>
             <Link href="/RegisterLightNovel">
                 <a className={styles.menuSubItem}>登録</a>
@@ -29,7 +29,10 @@ const Menu: NextPage = () => {
             </Link>
             <Link href="/ReservableLightNovelList">
                 <a className={styles.menuSubItem}>予約可能リスト</a>
-            </Link>    
+            </Link>
+            <Link href="/AsinRegisteredCheck">
+                <a className={styles.menuSubItem}>ASIN登録チェック</a>
+            </Link>
         </BurgetMenu>
     );
 }

@@ -1,0 +1,15 @@
+.container {
+    margin: 20px;
+}
+
+.checkAsinButton {
+    width: 200px;
+    height: 50px;
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+.asinText {
+    width: 400px;
+    margin-right: 20px;
+}
