@@ -2,15 +2,13 @@ import React, { useState, useRef } from 'react';
 import Layout from 'components/commons/Layout';
 import styles from 'styles/AsinRegisteredCheck.module.css';
 import axios from "components/utils/ApiUtil";
-import * as stringUtil from "components/utils/StringUtil";
 
 const AsinRegisteredCheck: React.FC = () => {
     const [asinListStr, setAsinListStr] = useState("");
     const [amazonUrlList, setAmazonUrlList] = useState<string[]>([]);
-
-    const refAsin = useRef<HTMLInputElement>(null);
     
     const doCheck = async () => {
+        let isExist = false;
         const tempAmazonUrlList: string[] = []
         const asinList = asinListStr.split("\n");
         for (const asin of asinList) {
@@ -18,11 +16,15 @@ const AsinRegisteredCheck: React.FC = () => {
                 const res = await axios.get(`/api/checkAsinLightNovel`, {params: {asin: asin}});
                 if (res.data.result == "OK") {
                     tempAmazonUrlList.push(`https://www.amazon.co.jp/dp/${asin}`)
+                    isExist = true;
                 }
             }
         }
         setAmazonUrlList(tempAmazonUrlList)
         setAsinListStr("")
+        if (!isExist) {
+            alert("全て既に登録されたASIN番号です")
+        }
     }
 
     return (
